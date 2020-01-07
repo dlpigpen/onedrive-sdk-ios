@@ -66,8 +66,10 @@
         params[@"item"] = [self.item dictionaryFromItem];
     }
 
- 
-    NSData *body = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
+    // workaround bug on OneDrive Business API, when we specify "conflict behavior",
+    // the API will fail if that parameter is not the first parameter on request
+    // https://github.com/microsoftgraph/msgraph-sdk-dotnet/issues/364
+    NSData *body = [NSJSONSerialization dataWithJSONObject:params options:NSJSONWritingSortedKeys error:nil];
     return [self requestWithMethod:@"POST" body:body headers:nil];
 }
 
