@@ -254,7 +254,7 @@ correlationId:(NSUUID *)correlationId
                     // Instead of loading the URL immediately on completion, get the UI on the screen
                     // and then dispatch the call to load the authorization URL
                     dispatch_async( dispatch_get_main_queue(), ^{
-                        [_authenticationViewController startWithURL:startURL endAtURL:endURL];
+                        [self->_authenticationViewController startWithURL:startURL endAtURL:endURL];
                     });
                 }];
             }
@@ -278,7 +278,7 @@ correlationId:(NSUUID *)correlationId
     if (error)
     {
         dispatch_async( [ADAuthenticationSettings sharedInstance].dispatchQueue, ^{
-            _completionBlock( error, nil );
+            self->_completionBlock( error, nil );
         });
     }
 }

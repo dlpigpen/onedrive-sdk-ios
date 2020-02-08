@@ -50,7 +50,7 @@
 @property (readonly, getter = isMultiResourceRefreshToken) BOOL multiResourceRefreshToken;
 
 /*! Obtains a key to be used for the internal cache from the full cache item.
- @param error: if a key cannot be extracted, the method will return nil and if this parameter is not nil,
+ @param error if a key cannot be extracted, the method will return nil and if this parameter is not nil,
  it will be filled with the appropriate error information.*/
 -(ADTokenCacheStoreKey*) extractKeyWithError: (ADAuthenticationError* __autoreleasing *) error;
 

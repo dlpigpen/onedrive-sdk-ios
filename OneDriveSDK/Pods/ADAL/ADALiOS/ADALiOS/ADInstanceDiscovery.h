@@ -36,10 +36,10 @@ typedef void(^ADDiscoveryCallback)(BOOL validated, ADAuthenticationError* error)
 +(ADInstanceDiscovery*) sharedInstance;
 
 /*! Validates asynchronously the provided authority. Caches the validations in in-memory cache.
- @param authority: the authority to be validated. ADFS authority instances cannot be validated.
- @param correlationId: a special UUID sent out with the validation request. This UUID can be useful in case
+ @param authority the authority to be validated. ADFS authority instances cannot be validated.
+ @param correlationId a special UUID sent out with the validation request. This UUID can be useful in case
  of calling support to track unexpected failures. This parameter may be null, in which case the method will generate a new UUID.
- @param completionBlock: the block to be called when the result is achieved.*/
+ @param completionBlock the block to be called when the result is achieved.*/
 -(void) validateAuthority: (NSString*) authority
             correlationId: (NSUUID*) correlationId
           completionBlock: (ADDiscoveryCallback) completionBlock;

@@ -119,7 +119,7 @@ NSTimer *timer;
     
     if([ADNTLMHandler isChallengeCancelled]){
         _complete = YES;
-        dispatch_async( dispatch_get_main_queue(), ^{[_delegate webAuthenticationDidCancel];});
+        dispatch_async( dispatch_get_main_queue(), ^{[self->_delegate webAuthenticationDidCancel];});
         return NO;
     }
     
@@ -132,7 +132,7 @@ NSTimer *timer;
     
     if ([[[request.URL scheme] lowercaseString] isEqualToString:@"browser"]) {
         _complete = YES;
-        dispatch_async( dispatch_get_main_queue(), ^{[_delegate webAuthenticationDidCancel];});
+        dispatch_async( dispatch_get_main_queue(), ^{[self->_delegate webAuthenticationDidCancel];});
         
         requestURL = [requestURL stringByReplacingOccurrencesOfString:@"browser://" withString:@"https://"];
         [[UIApplication sharedApplication] openURL:[[NSURL alloc] initWithString:requestURL]];
@@ -159,7 +159,7 @@ NSTimer *timer;
         // This event is explicitly scheduled on the main thread as it is UI related.
         NSAssert( nil != _delegate, @"Delegate object was lost" );
         
-        dispatch_async( dispatch_get_main_queue(), ^{ [_delegate webAuthenticationDidCompleteWithURL:request.URL]; } );
+        dispatch_async( dispatch_get_main_queue(), ^{ [self->_delegate webAuthenticationDidCompleteWithURL:request.URL]; } );
         
         // Tell the web view that this URL should not be loaded.
         return NO;
@@ -171,7 +171,7 @@ NSTimer *timer;
         AD_LOG_ERROR(@"Server is redirecting to a non-https url", AD_ERROR_NON_HTTPS_REDIRECT, nil);
         _complete = YES;
         ADAuthenticationError* error = [ADAuthenticationError errorFromNonHttpsRedirect];
-        dispatch_async( dispatch_get_main_queue(), ^{ [_delegate webAuthenticationDidFailWithError:error]; } );
+        dispatch_async( dispatch_get_main_queue(), ^{ [self->_delegate webAuthenticationDidFailWithError:error]; } );
         return NO;
     }
     
@@ -223,7 +223,7 @@ NSTimer *timer;
         if ([[urlString lowercaseString] hasPrefix:_endURL.lowercaseString])
         {
             _complete = YES;
-            dispatch_async( dispatch_get_main_queue(), ^{ [_delegate webAuthenticationDidCompleteWithURL:url]; } );
+            dispatch_async( dispatch_get_main_queue(), ^{ [self->_delegate webAuthenticationDidCompleteWithURL:url]; } );
             return;
         }
     }
@@ -248,9 +248,9 @@ NSTimer *timer;
     {
         AD_LOG_ERROR(@"authorization error", error.code, [error localizedDescription]);
         if([ADNTLMHandler isChallengeCancelled]){
-            dispatch_async( dispatch_get_main_queue(), ^{ [_delegate webAuthenticationDidCancel]; } );
+            dispatch_async( dispatch_get_main_queue(), ^{ [self->_delegate webAuthenticationDidCancel]; } );
         } else{
-            dispatch_async( dispatch_get_main_queue(), ^{ [_delegate webAuthenticationDidFailWithError:error]; } );
+            dispatch_async( dispatch_get_main_queue(), ^{ [self->_delegate webAuthenticationDidFailWithError:error]; } );
         }
     }
     else

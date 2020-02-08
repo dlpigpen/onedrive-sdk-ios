@@ -45,6 +45,9 @@
     }
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
+
 - (void)viewDidUnload
 {
     DebugLog();
@@ -60,6 +63,8 @@
     else
         return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma clang diagnostic pop
 
 #pragma mark - Event Handlers
 

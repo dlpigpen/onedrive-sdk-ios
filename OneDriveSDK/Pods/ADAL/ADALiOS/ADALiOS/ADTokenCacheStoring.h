@@ -30,10 +30,10 @@
 -(NSArray*) allItemsWithError:(ADAuthenticationError* __autoreleasing*) error;
 
 /*! May return nil, if no cache item corresponds to the requested key
- @param key: The key of the item.
- @param user: The specific user whose item is needed. May be nil, in which
+ @param key The key of the item.
+ @param userId The specific user whose item is needed. May be nil, in which
  case the item for the first user in the cache will be returned. 
- @param error: Will be set only in case of ambiguity. E.g. if userId is nil
+ @param error Will be set only in case of ambiguity. E.g. if userId is nil
  and we have tokens from multiple users. If the cache item is not present,
  the error will not be set. */
 -(ADTokenCacheStoreItem*) getItemWithKey: (ADTokenCacheStoreKey*)key
@@ -50,15 +50,15 @@
 /*! Extracts the key from the item and uses it to set the cache details. If another item with the
  same key exists, it will be overriden by the new one. 'getItemWithKey' method can be used to determine
  if an item already exists for the same key.
- @param error: in case of an error, if this parameter is not nil, it will be filled with
+ @param error in case of an error, if this parameter is not nil, it will be filled with
  the error details. */
 -(void) addOrUpdateItem: (ADTokenCacheStoreItem*) item
                   error: (ADAuthenticationError* __autoreleasing*) error;
 
 /*! Clears token cache details for specific keys.
- @param key: the key of the cache item. Key can be extracted from the ADTokenCacheStoreItem using
+ @param key the key of the cache item. Key can be extracted from the ADTokenCacheStoreItem using
  the method 'extractKeyWithError'
- @param userId: The user for which the item will be removed. Can be nil, in which case items for all users with
+ @param userId The user for which the item will be removed. Can be nil, in which case items for all users with
  the specified key will be removed.
  The method does not raise an error, if the item is not found.
 */

@@ -27,7 +27,7 @@
                                           error: (ADAuthenticationError* __autoreleasing*) error;
 
 /*! Factory method to extract user information from the AAD id_token parameter.
- @param: idToken: The contents of the id_token parameter, as passed by the server. */
+ @param idToken The contents of the id_token parameter, as passed by the server. */
 +(ADUserInformation*) userInformationWithIdToken: (NSString*) idToken
                                            error: (ADAuthenticationError* __autoreleasing*) error;
 

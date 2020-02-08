@@ -55,7 +55,7 @@
 
 /*! Deletes an item, specified by the passed attributes. Returns YES, if a real
  deletion occurred. Does not raise an error if the keychain item is not present anymore. 
- @param attributes: The attributes, as returned by SecItemCopyMatching (wrapped by getItemsWithAttributes). */
+ @param attributes The attributes, as returned by SecItemCopyMatching (wrapped by getItemsWithAttributes). */
 -(BOOL) deleteByAttributes: (NSDictionary*) attributes
                      error: (ADAuthenticationError* __autoreleasing*) error;
 
