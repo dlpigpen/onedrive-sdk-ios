@@ -16,7 +16,7 @@ Integrate the [OneDrive API](https://dev.onedrive.com/README.htm) into your iOS 
 
 ### 2.1 Register your application
 
-Register your application by following [these](https://dev.onedrive.com/app-registration.htm) steps.
+Register your application by following [these](https://apps.dev.microsoft.com/) steps.
 
 ### 2.2 Set up Keychain Sharing Entitlements in your Xcode Project
 
