@@ -140,6 +140,7 @@
 		10FF89C71B4B4424001A2234 /* ODAADAccountBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = 10FF89C51B4B4424001A2234 /* ODAADAccountBridge.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		10FF89C81B4B4424001A2234 /* ODAADAccountBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 10FF89C61B4B4424001A2234 /* ODAADAccountBridge.m */; };
 		28CE8267244D96C3B385DE95 /* libPods-OneDriveSDKTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A80DBCCDB6C761D36FB8CBDD /* libPods-OneDriveSDKTests.a */; };
+		3AB9699E242786AF00748024 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AB96998242786AF00748024 /* WebKit.framework */; };
 		7CF5250B1CEA7E9B00E7F086 /* ODAsyncOperationStatus.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF524CE1CEA7E9B00E7F086 /* ODAsyncOperationStatus.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7CF5250C1CEA7E9B00E7F086 /* ODAsyncOperationStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CF524CF1CEA7E9B00E7F086 /* ODAsyncOperationStatus.m */; };
 		7CF5250D1CEA7E9B00E7F086 /* ODAudio.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CF524D01CEA7E9B00E7F086 /* ODAudio.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -483,6 +484,7 @@
 		10FF89C51B4B4424001A2234 /* ODAADAccountBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODAADAccountBridge.h; sourceTree = "<group>"; };
 		10FF89C61B4B4424001A2234 /* ODAADAccountBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ODAADAccountBridge.m; sourceTree = "<group>"; };
 		11BC54005EED17791D179C16 /* Pods-OneDriveSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDriveSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneDriveSDK/Pods-OneDriveSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		3AB96998242786AF00748024 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		5E3D8C1D3DE438DDC5A5C689 /* Pods-OneDriveSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDriveSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneDriveSDK/Pods-OneDriveSDK.release.xcconfig"; sourceTree = "<group>"; };
 		7960493E1BE2BAEEAA7BD57C /* Pods-OneDriveSDKTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneDriveSDKTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneDriveSDKTests/Pods-OneDriveSDKTests.release.xcconfig"; sourceTree = "<group>"; };
 		7CF524CE1CEA7E9B00E7F086 /* ODAsyncOperationStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ODAsyncOperationStatus.h; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AB9699E242786AF00748024 /* WebKit.framework in Frameworks */,
 				F2D50F58096095AB1860B79B /* libPods-OneDriveSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1152,6 +1155,7 @@
 		380730D0B849C1024861E69D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AB96998242786AF00748024 /* WebKit.framework */,
 				07F15415D48153E70243F2B4 /* libPods-OneDriveSDK.a */,
 				A80DBCCDB6C761D36FB8CBDD /* libPods-OneDriveSDKTests.a */,
 			);
