@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
 
-  s.name         = "OneDriveSDK"
+  s.name         = "OneDriveSDK-Pod"
   s.version      = "1.3.2"
   s.summary      = "OneDrive iOS SDK"
 
@@ -36,7 +36,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec "Implementations" do |usm|
-    usm.dependency 'OneDriveSDK/Common'
+    usm.dependency 'OneDriveSDK-Pod/Common'
     usm.source_files = "OneDriveSDK/OneDriveSDK/ODURLSessionManager/*{h,m}", "OneDriveSDK/OneDriveSDK/*{h,m}"
     usm.public_header_files = "OneDriveSDK/OneDriveSDK/**/*.h"
     usm.exclude_files = "OneDriveSDK/OneDriveSDK/OneDriveSDK.h"
@@ -44,9 +44,9 @@ Pod::Spec.new do |s|
 
 
   s.subspec "Auth" do |oda|
-    oda.dependency 'ADAL', '~> 1.2'
-    oda.dependency 'Base32', '~> 1.1'
-    oda.dependency 'OneDriveSDK/Common'
+    oda.dependency 'ADAL'
+    oda.dependency 'Base32'
+    oda.dependency 'OneDriveSDK-Pod/Common'
 
     oda.source_files = "OneDriveSDK/Auth/*.{h,m}", "OneDriveSDK/Accounts/*.{h,m}"
     oda.public_header_files = "OneDriveSDK/Auth/*.h", "OneDriveSDK/Accounts/*.h"
@@ -54,7 +54,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec "OneDriveCoreSDK" do |core|
-    core.dependency 'OneDriveSDK/Common'
+    core.dependency 'OneDriveSDK-Pod/Common'
 
     core.source_files = "OneDriveSDK/OneDriveCoreSDK/**/*.{h,m}"
     core.public_header_files = "OneDriveSDK/OneDriveCoreSDK/**/*.h"
@@ -62,9 +62,9 @@ Pod::Spec.new do |s|
   end
 
   s.subspec "Extensions" do |ext|
-    ext.dependency 'OneDriveSDK/OneDriveCoreSDK'
-    ext.dependency 'OneDriveSDK/Implementations'
-    ext.dependency 'OneDriveSDK/Auth'
+    ext.dependency 'OneDriveSDK-Pod/OneDriveCoreSDK'
+    ext.dependency 'OneDriveSDK-Pod/Implementations'
+    ext.dependency 'OneDriveSDK-Pod/Auth'
 
     ext.source_files = "OneDriveSDK/Extensions/*.{h,m}"
     ext.public_header_files = "OneDriveSDK/Extensions/*.h"
