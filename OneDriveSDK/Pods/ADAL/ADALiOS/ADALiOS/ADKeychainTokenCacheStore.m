@@ -18,7 +18,7 @@
 
 #import <Security/Security.h>
 #import "ADALiOS.h"
-#import "ADKeychainTokenCacheStore.h"
+#import "ADKeyChainTokenCacheStore.h"
 #import "ADTokenCacheStoreItem.h"
 #import "NSString+ADHelperMethods.h"
 #import "ADTokenCacheStoreKey.h"
@@ -485,7 +485,7 @@ const long sKeychainVersion = 1;//will need to increase when we break the forwar
 /*! Extracts the key from the item and uses it to set the cache details. If another item with the
  same key exists, it will be overriden by the new one. 'getItemWithKey' method can be used to determine
  if an item already exists for the same key.
- @param error in case of an error, if this parameter is not nil, it will be filled with
+ @param error: in case of an error, if this parameter is not nil, it will be filled with
  the error details. */
 -(void) addOrUpdateItem: (ADTokenCacheStoreItem*) item
                   error: (ADAuthenticationError* __autoreleasing*) error

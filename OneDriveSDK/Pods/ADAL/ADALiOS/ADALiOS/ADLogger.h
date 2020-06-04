@@ -33,17 +33,17 @@ typedef enum
 
 /*! Sets the logging level for the internal logging messages. Messages with
  priority lower than the specified level will be ignored. 
- @param logLevel desired logging level. The higher the number, the more logging information is included. */
+ @param logLevel: desired logging level. The higher the number, the more logging information is included. */
 +(void) setLevel: (ADAL_LOG_LEVEL)logLevel;
 
 /*! Returns the current log level. See setLevel for details */
 +(ADAL_LOG_LEVEL) getLevel;
 
 /*! Main logging function. Macros like ADAL_LOG_ERROR are provided on top for convenience
- @param logLevel The applicable priority of the logged message. Use AD_LOG_LEVEL_NO_LOG to disable all logging.
- @param message Short text defining the operation/condition.
- @param additionalInformation Full details. May contain parameter names, stack traces, etc. May be nil.
- @param errorCode if an explicit error has occurred, this code will contain its code.
+ @param logLevel: The applicable priority of the logged message. Use AD_LOG_LEVEL_NO_LOG to disable all logging.
+ @param message: Short text defining the operation/condition.
+ @param additionalInformation: Full details. May contain parameter names, stack traces, etc. May be nil.
+ @param errorCode: if an explicit error has occurred, this code will contain its code.
  */
 +(void) log: (ADAL_LOG_LEVEL)logLevel
     message: (NSString*) message
@@ -51,10 +51,10 @@ typedef enum
 additionalInformation: (NSString*) additionalInformation;
 
 /*! Logs obtaining of a token. The method does not log the actual token, only its hash.
- @param token the token to log.
- @param tokenType "access token", "refresh token", "multi-resource refresh token"
- @param expiresOn the time when an access token will stop to be valid. Nil for refresh token types.
- @param correlationId In case the token was just obtained from the server, the correlation id of the call.
+ @param token: the token to log.
+ @param tokenType: "access token", "refresh token", "multi-resource refresh token"
+ @param expiresOn: the time when an access token will stop to be valid. Nil for refresh token types.
+ @param correlationId: In case the token was just obtained from the server, the correlation id of the call.
  This parameter can be nil.
 */
 +(void) logToken: (NSString*) token
@@ -71,7 +71,7 @@ typedef void (^LogCallback)(ADAL_LOG_LEVEL logLevel,
                             NSInteger errorCode);
 
 /*! Provided block will be called when the logged messages meet the priority threshold
- @param callback The block to be executed when suitable messages are logged. By default, when
+ @param callback: The block to be executed when suitable messages are logged. By default, when
  callback is set, messages will contingue to be logged through NSLog. Such logging can be disabled
  through setNSLogging. */
 +(void) setLogCallBack: (LogCallback) callback;
@@ -118,7 +118,7 @@ typedef void (^LogCallback)(ADAL_LOG_LEVEL logLevel,
 //If we make this a method, we will lose the warning when the string formatting parameters do not match the actual parameters.
 #define AD_LOG_FORMAT(level, msg, code, info...) \
 { \
-    if (1/*FIRST_ARG(info)*/)/*Avoid crash in logging*/ \
+    if (FIRST_ARG(info))/*Avoid crash in logging*/ \
     { \
         NSString* logInfo = [NSString stringWithFormat:info]; \
         [ADLogger log: level \

@@ -27,8 +27,7 @@
 #if TARGET_OS_IPHONE
 //iOS:
 #   include <UIKit/UIKit.h>
-#   include <WebKit/WebKit.h>
-typedef WKWebView WebViewType;
+typedef UIWebView WebViewType;
 #else
 //OS X:
 #   include <WebKit/WebKit.h>
@@ -86,11 +85,11 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
 
 /*! The method allows subclassing of ADAuthenticationContext. For direct class usage, the static factory methods
  are recommended due to their simplicity.
- @param authority The AAD or ADFS authority. Example: @"https://login.windows.net/contoso.com"
- @param validateAuthority Specifies if the authority should be validated.
- @param tokenCache Allows the user to specify a dictionary object that will implement the token caching. If this
+ @param authority: The AAD or ADFS authority. Example: @"https://login.windows.net/contoso.com"
+ @param validateAuthority: Specifies if the authority should be validated.
+ @param tokenCacheStore: Allows the user to specify a dictionary object that will implement the token caching. If this
  parameter is null, tokens will not be cached.
- @param error the method will fill this parameter with the error details, if such error occurs. This parameter can
+ @param error: the method will fill this parameter with the error details, if such error occurs. This parameter can
  be nil.
  */
 -(id) initWithAuthority: (NSString*) authority
@@ -99,17 +98,17 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
 
 /*! Creates the object, setting the authority, default cache and enables the authority validation. In case of an error
  the function will return nil and if the error parameter is supplied, it will be filled with error details.
- @param authority The AAD or ADFS authority. Example: @"https://login.windows.net/contoso.com"
- @param error the method will fill this parameter with the error details, if such error occurs. This parameter can
+ @param authority: The AAD or ADFS authority. Example: @"https://login.windows.net/contoso.com"
+ @param error: the method will fill this parameter with the error details, if such error occurs. This parameter can
  be nil. */
 +(ADAuthenticationContext*) authenticationContextWithAuthority: (NSString*) authority
                                                          error: (ADAuthenticationError* __autoreleasing *) error;
 
 /*! Creates the object, setting the authority, default cache and desired authority validation flag. In case of an error
  the function will return nil and if the error parameter is supplied, it will be filled with error details.
- @param authority The AAD or ADFS authority. Example: @"https://login.windows.net/contoso.com"
- @param validate Specifies if the authority should be validated.
- @param error the method will fill this parameter with the error details, if such error occurs. This parameter can
+ @param authority: The AAD or ADFS authority. Example: @"https://login.windows.net/contoso.com"
+ @param validateAuthority: Specifies if the authority should be validated.
+ @param error: the method will fill this parameter with the error details, if such error occurs. This parameter can
  be nil. */
 +(ADAuthenticationContext*) authenticationContextWithAuthority: (NSString*) authority
                                              validateAuthority: (BOOL) validate
@@ -118,10 +117,10 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
 /*! Creates the object, setting the authority, desired cache and enables the authority validation. In case of an error
  the function will return nil and if the error parameter is supplied, it will be filled with error details.
  @param authority The AAD or ADFS authority. Example: @"https://login.windows.net/contoso.com"
- @ param validateAuthority: Specifies if the authority should be validated.
- @param tokenCache Allows the user to specify a dictionary object that will implement the token caching. If this
+ @param validateAuthority: Specifies if the authority should be validated.
+ @param tokenCacheStore: Allows the user to specify a dictionary object that will implement the token caching. If this
  parameter is null, tokens will not be cached.
- @param error the method will fill this parameter with the error details, if such error occurs. This parameter can
+ @param error: the method will fill this parameter with the error details, if such error occurs. This parameter can
  be nil. */
 +(ADAuthenticationContext*) authenticationContextWithAuthority: (NSString*) authority
                                                tokenCacheStore: (id<ADTokenCacheStoring>) tokenCache
@@ -130,10 +129,10 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
 /*! Creates the object, setting the authority, desired cache and desired authority validation flag. In case of an error
  the function will return nil and if the error parameter is supplied, it will be filled with error details.
  @param authority The AAD or ADFS authority. Example: @"https://login.windows.net/contoso.com"
- @param validate Specifies if the authority should be validated.
- @param tokenCache Allows the user to specify a dictionary object that will implement the token caching. If this
+ @param validateAuthority Specifies if the authority should be validated.
+ @param tokenCacheStore Allows the user to specify a dictionary object that will implement the token caching. If this
  parameter is null, the library will use a shared, internally implemented static instance instead.
- @param error the method will fill this parameter with the error details, if such error occurs. This parameter can
+ @param error: the method will fill this parameter with the error details, if such error occurs. This parameter can
  be nil. */
 +(ADAuthenticationContext*) authenticationContextWithAuthority: (NSString*) authority
                                              validateAuthority: (BOOL) validate
@@ -171,12 +170,12 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
  the function will use the refresh token automatically. If neither of these attempts succeeds, the method will use the provided assertion to get an 
  access token from the service.
  
- @param assertion the assertion representing the authenticated user.
- @param assertionType the assertion type of the user assertion.
- @param resource the resource whose token is needed.
- @param clientId the client identifier
- @param userId the required user id of the authenticated user.
- @param completionBlock the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
+ @param samlAssertion: the assertion representing the authenticated user.
+ @param assertionType: the assertion type of the user assertion.
+ @param resource: the resource whose token is needed.
+ @param clientId: the client identifier
+ @param userId: the required user id of the authenticated user.
+ @param completionBlock: the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
  */
 -(void)  acquireTokenForAssertion: (NSString*) assertion
                     assertionType: (ADAssertionType) assertionType
@@ -192,10 +191,10 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
  credentials web UI for the user to re-authorize the resource usage. Logon cookie from previous authorization may be
  leveraged by the web UI, so user may not be actuall prompted. Use the other overloads if a more precise control of the
  UI displaying is desired.
- @param resource the resource whose token is needed.
- @param clientId the client identifier
- @param redirectUri The redirect URI according to OAuth2 protocol.
- @param completionBlock the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
+ @param resource: the resource whose token is needed.
+ @param clientId: the client identifier
+ @param redirectUri: The redirect URI according to OAuth2 protocol.
+ @param completionBlock: the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
  */
 -(void) acquireTokenWithResource: (NSString*) resource
                         clientId: (NSString*) clientId
@@ -208,12 +207,12 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
  credentials web UI for the user to re-authorize the resource usage. Logon cookie from previous authorization may be
  leveraged by the web UI, so user may not be actuall prompted. Use the other overloads if a more precise control of the
  UI displaying is desired.
- @param resource the resource whose token is needed.
- @param clientId the client identifier
- @param redirectUri The redirect URI according to OAuth2 protocol
- @param userId The user to be prepopulated in the credentials form. Additionally, if token is found in the cache,
+ @param resource: the resource whose token is needed.
+ @param clientId: the client identifier
+ @param redirectUri: The redirect URI according to OAuth2 protocol
+ @param userId: The user to be prepopulated in the credentials form. Additionally, if token is found in the cache,
  it may not be used if it belongs to different token. This parameter can be nil.
- @param completionBlock the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
+ @param completionBlock: the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
  */
 -(void) acquireTokenWithResource: (NSString*) resource
                         clientId: (NSString*) clientId
@@ -227,13 +226,13 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
  credentials web UI for the user to re-authorize the resource usage. Logon cookie from previous authorization may be
  leveraged by the web UI, so user may not be actuall prompted. Use the other overloads if a more precise control of the
  UI displaying is desired.
- @param resource the resource whose token is needed.
- @param clientId the client identifier
- @param redirectUri The redirect URI according to OAuth2 protocol
- @param userId The user to be prepopulated in the credentials form. Additionally, if token is found in the cache,
+ @param resource: the resource whose token is needed.
+ @param clientId: the client identifier
+ @param redirectUri: The redirect URI according to OAuth2 protocol
+ @param userId: The user to be prepopulated in the credentials form. Additionally, if token is found in the cache,
  it may not be used if it belongs to different token. This parameter can be nil.
- @param queryParams will be appended to the HTTP request to the authorization endpoint. This parameter can be nil.
- @param completionBlock the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
+ @param extraQueryParameters: will be appended to the HTTP request to the authorization endpoint. This parameter can be nil.
+ @param completionBlock: the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
  */
 -(void)  acquireTokenWithResource: (NSString*) resource
                          clientId: (NSString*) clientId
@@ -244,14 +243,14 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
 
 /*! Follows the OAuth2 protocol (RFC 6749). The behavior is controlled by the promptBehavior parameter on whether to re-authorize the
  resource usage (through webview credentials UI) or attempt to use the cached tokens first.
- @param resource the resource for whom token is needed.
- @param clientId the client identifier
- @param redirectUri The redirect URI according to OAuth2 protocol
- @param userId The user to be prepopulated in the credentials form. Additionally, if token is found in the cache,
+ @param resource: the resource for whom token is needed.
+ @param clientId: the client identifier
+ @param redirectUri: The redirect URI according to OAuth2 protocol
+ @param userId: The user to be prepopulated in the credentials form. Additionally, if token is found in the cache,
  it may not be used if it belongs to different token. This parameter can be nil.
- @param queryParams will be appended to the HTTP request to the authorization endpoint. This parameter can be nil.
- @param promptBehavior controls if any credentials UI will be shownt.
- @param completionBlock the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
+ @param extraQueryParameters: will be appended to the HTTP request to the authorization endpoint. This parameter can be nil.
+ @param promptBehavior: controls if any credentials UI will be shownt.
+ @param completionBlock: the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
  */
 -(void)  acquireTokenWithResource: (NSString*) resource
                          clientId: (NSString*) clientId
@@ -265,10 +264,10 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
  expiration. Additionally, if no suitable access token is found in the cache, but refresh token is available,
  the function will use the refresh token automatically. This method will not show UI for the user to reauthorize resource usage.
  If reauthorization is needed, the method will return an error with code AD_ERROR_USER_INPUT_NEEDED.
- @param resource the resource whose token is needed.
- @param clientId the client identifier
- @param redirectUri The redirect URI according to OAuth2 protocol.
- @param completionBlock the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
+ @param resource: the resource whose token is needed.
+ @param clientId: the client identifier
+ @param redirectUri: The redirect URI according to OAuth2 protocol.
+ @param completionBlock: the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
  */
 -(void) acquireTokenSilentWithResource: (NSString*) resource
                               clientId: (NSString*) clientId
@@ -279,12 +278,12 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
  expiration. Additionally, if no suitable access token is found in the cache, but refresh token is available,
  the function will use the refresh token automatically. This method will not show UI for the user to reauthorize resource usage.
  If reauthorization is needed, the method will return an error with code AD_ERROR_USER_INPUT_NEEDED.
- @param resource the resource whose token is needed.
- @param clientId the client identifier
- @param redirectUri The redirect URI according to OAuth2 protocol
- @param userId The user to be prepopulated in the credentials form. Additionally, if token is found in the cache,
+ @param resource: the resource whose token is needed.
+ @param clientId: the client identifier
+ @param redirectUri: The redirect URI according to OAuth2 protocol
+ @param userId: The user to be prepopulated in the credentials form. Additionally, if token is found in the cache,
  it may not be used if it belongs to different token. This parameter can be nil.
- @param completionBlock the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
+ @param completionBlock: the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
  */
 -(void) acquireTokenSilentWithResource: (NSString*) resource
                               clientId: (NSString*) clientId
@@ -295,9 +294,9 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
 /*! Follows the OAuth2 protocol (RFC 6749). Uses the refresh token to obtain an access token (and another refresh token). The method
  is superceded by acquireToken, which will implicitly use the refresh token if needed. Please use acquireTokenByRefreshToken
  only if you would like to store the access and refresh tokens, managing the expiration times in your application logic.
- @param refreshToken the resource whose token is needed.
- @param clientId the client identifier
- @param completionBlock the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here }"
+ @param refreshToken: the resource whose token is needed.
+ @param clientId: the client identifier
+ @param completionBlock: the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here }"
  */
 -(void) acquireTokenByRefreshToken: (NSString*) refreshToken
                           clientId: (NSString*) clientId
@@ -306,10 +305,10 @@ typedef void(^ADAuthenticationCallback)(ADAuthenticationResult* result);
 /*! Follows the OAuth2 protocol (RFC 6749). Uses the refresh token to obtain an access token (and another refresh token). The method
  is superceded by acquireToken, which will implicitly use the refresh token if needed. Please use acquireTokenByRefreshToken
  only if you would like to store the access and refresh tokens, managing the expiration times in your application logic.
- @param refreshToken the resource whose token is needed.
- @param clientId the client identifier
- @param resource the desired resource to which the token applies.
- @param completionBlock the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
+ @param refreshToken: the resource whose token is needed.
+ @param clientId: the client identifier
+ @param resource: the desired resource to which the token applies.
+ @param completionBlock: the block to execute upon completion. You can use embedded block, e.g. "^(ADAuthenticationResult res){ <your logic here> }"
  */
 -(void) acquireTokenByRefreshToken: (NSString*) refreshToken
                           clientId: (NSString*) clientId

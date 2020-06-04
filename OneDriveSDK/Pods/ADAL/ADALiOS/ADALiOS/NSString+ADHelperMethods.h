@@ -30,7 +30,7 @@
 
 /*! Returns YES if the passed string is contained. Throws if the passed
  argument is nil or empty string.
- @param contained string to search
+ @param cotnained:The string to search
  */
 -(BOOL) adContainsString: (NSString*) contained;
 
@@ -41,8 +41,8 @@
  not in the passed set. Returns the index of the first occurence, or just beyond the end
  (self.length) if not found. If start is beyond the end of the string, the method returns
  index just beyond the end (self.length).
- @param set The set of characters to find. E.g. [NSCharacterSet whitespaceAndNewlineCharacterSet]
- @param startIndex The character index where to start searching. */
+ @param set: The set of characters to find. E.g. [NSCharacterSet whitespaceAndNewlineCharacterSet]
+ @param start: The character index where to start searching. */
 -(long) adFindCharactersFromSet: (NSCharacterSet*) set
                         start: (long) startIndex;
 

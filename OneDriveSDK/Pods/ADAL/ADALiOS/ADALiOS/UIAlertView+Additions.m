@@ -30,7 +30,7 @@ static UIAlertView *alert;
     id handler = objc_getAssociatedObject(alertView, HANDLER_KEY);
     
     if (handler)
-        ((void(^)(NSInteger))handler)(buttonIndex);
+        ((void(^)())handler)(buttonIndex);
 }
 
 + (id) getAlertInstance
