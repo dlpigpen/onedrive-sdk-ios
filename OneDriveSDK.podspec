@@ -48,7 +48,7 @@ Pod::Spec.new do |s|
     # oda.dependency 'Base32', '~> 1.1'
     oda.dependency 'OneDriveSDK/Common'
 
-    oda.source_files = "OneDriveSDK/Auth/*.{h,m}", "OneDriveSDK/Accounts/*.{h,m}", 'OneDriveSDK/Pods/ADAL/ADALiOS/ADALiOS/*.{h,m}', 'OneDriveSDK/Pods/ADAL/Base32/Base32/*.{h,m}'
+    oda.source_files = "OneDriveSDK/Auth/*.{h,m}", "OneDriveSDK/Accounts/*.{h,m}", 'OneDriveSDK/ADAL/ADALiOS/ADALiOS/*.{h,m}', 'OneDriveSDK/Base32/Base32/*.{h,m}'
     oda.public_header_files = "OneDriveSDK/Auth/*.h", "OneDriveSDK/Accounts/*.h"
 
   end
