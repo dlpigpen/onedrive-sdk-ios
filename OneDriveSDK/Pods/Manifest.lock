@@ -1,24 +1,16 @@
 PODS:
-  - ADAL (1.2.10)
-  - Base32 (1.1.2)
   - OCMock (3.6)
 
 DEPENDENCIES:
-  - ADAL (~> 1.2)
-  - Base32 (~> 1.1)
   - OCMock
 
 SPEC REPOS:
   trunk:
-    - ADAL
-    - Base32
     - OCMock
 
 SPEC CHECKSUMS:
-  ADAL: f2eb2158b9bcd2c8416ff2d026c176b98ea6651f
-  Base32: 163c298644d184e89ca4e00a996bad6bf5166390
   OCMock: 5ea90566be239f179ba766fd9fbae5885040b992
 
-PODFILE CHECKSUM: 8afcd645b02aa05c2017a89a14e0aef01c4aeacc
+PODFILE CHECKSUM: c3eb26cb44b43b0aea16236d59451d2bfef0527d
 
 COCOAPODS: 1.9.1

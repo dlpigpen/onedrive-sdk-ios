@@ -21,9 +21,9 @@
 
 #import "ODAADAccountBridge.h"
 
-#import <ADAL/ADUserInformation.h>
-#import <ADAL/ADTokenCacheStoreItem.h>
-#import <Base32/MF_Base32Additions.h>
+#import "ADUserInformation.h"
+#import "ADTokenCacheStoreItem.h"
+#import "MF_Base32Additions.h"
 
 #import "ODAccountSession.h"
 #import "ODServiceInfo.h"

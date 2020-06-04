@@ -1,1 +1,0 @@
-../../../ADAL/ADALiOS/ADALiOS/ADAuthenticationParameters.h

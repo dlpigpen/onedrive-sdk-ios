@@ -1,1 +1,0 @@
-../../../ADAL/ADALiOS/ADALiOS/ADTokenCacheValue.h
